@@ -3,8 +3,9 @@ import cv2
 # Opens the inbuilt camera of laptop to capture video.
 cap = cv2.VideoCapture(0)
 i = 0
+frame_num = 1
 
-while(cap.isOpened() and i<=1):
+while(cap.isOpened() and i<=frame_num):
 
     ret, frame = cap.read()
 
