@@ -1,9 +1,6 @@
 from flask import Flask, jsonify, request
 from model.detect_face import detect_face
 from facenet_pytorch import MTCNN
-import base64
-import numpy as np
-import cv2
 
 from matplotlib import pyplot as plt
 
@@ -30,4 +27,4 @@ def model():
     return jsonify(response)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0", port="5000")
