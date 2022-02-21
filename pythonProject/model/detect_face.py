@@ -1,13 +1,10 @@
-from facenet_pytorch import MTCNN
 from facenet_pytorch.models.utils.detect_face import extract_face
 import cv2
 import os
 from PIL import Image
-from matplotlib import pyplot as plt
 import numpy as np
 import math
 import torch
-import tensorflow as tf
 import base64
 import requests
 from tensorflow.keras.preprocessing import image # tensorflow ver: 2.xx 일때 사용
