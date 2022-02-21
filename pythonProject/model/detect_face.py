@@ -1,4 +1,3 @@
-from facenet_pytorch.models.utils.detect_face import extract_face
 import cv2
 import os
 from PIL import Image
