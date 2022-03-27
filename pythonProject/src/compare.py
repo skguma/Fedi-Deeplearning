@@ -35,7 +35,7 @@ import os
 import copy
 import argparse
 from src import facenet
-from src.align import detect_face
+# from src.align import detect_face
 from src.align.detect_face_custom import detect_face
 import matplotlib.pyplot as plt
 from facenet_pytorch import MTCNN

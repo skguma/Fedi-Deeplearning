@@ -28,8 +28,8 @@ def detectFace():
     processed_img, left_eye, right_eye = detect_face(img, mtcnn)
 
     eyes = ' '.join(str(e) for e in left_eye.tolist() + right_eye.tolist())
-    plt.imshow(processed_img)
-    plt.show()
+    # plt.imshow(processed_img)
+    # plt.show()
 
     response = {}
     response["eyes"] = eyes
@@ -39,7 +39,7 @@ def detectFace():
 @app.route('/analysis', methods=['POST'])
 def analysis():
     file = request.files['file']
-    images = eval(ast.literal_eval(request.values['images']))
+    images = eval(request.values['images'].replace("\\", ""))
     results = find_face(file,images)
     return json.dumps(results, cls=NumpyEncoder)
 
