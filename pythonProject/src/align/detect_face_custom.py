@@ -35,7 +35,6 @@ def load_image(img):
 
 	if file_storage_img == True:
 		img = np.fromstring(img.read(), np.uint8)
-		print(img)
 		img = cv2.imdecode(img, cv2.IMREAD_COLOR)
 		img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
