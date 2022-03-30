@@ -35,7 +35,7 @@ import os
 import copy
 import argparse
 from src import facenet
-from src.align import detect_face
+# from src.align import detect_face
 from src.align.detect_face_custom import detect_face
 import matplotlib.pyplot as plt
 from facenet_pytorch import MTCNN
@@ -49,8 +49,8 @@ def detect_faces(imgs):
         mtcnn = MTCNN(post_process=False)
         processed_img, left_eye, right_eye = detect_face(img, mtcnn)
         results.append(processed_img)
-        plt.imshow(processed_img)
-        plt.show()
+        # plt.imshow(processed_img)
+        # plt.show()
 
     return results
 
