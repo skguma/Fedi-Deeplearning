@@ -23,7 +23,8 @@ def home():
 
 @app.route('/detectFace', methods=['POST'])
 def detectFace():
-    img = request.files['file']
+    #img = request.files['file']
+    img = request.values['images']
     mtcnn = MTCNN(post_process=False)
     processed_img, left_eye, right_eye = detect_face(img, mtcnn)
 
@@ -46,14 +47,13 @@ def analysis():
 @app.route('/results', methods=['POST'])
 def results():
     file = request.files['file']
-    strings = request.values['images'].replace("\n", "")
-    images = eval(ast.literal_eval(strings))
+    images = eval(request.values['images'])
     results = calculate_distance(file, images)
     return json.dumps(results, cls=NumpyEncoder)
 
 @app.route('/extract',methods=['POST'])
 def extract():
-    images = eval(ast.literal_eval(request.values['images']))
+    images = eval(request.values['images'].replace("\\", ""))
     results = calculate_embeddings(images)
     return json.dumps(results, cls=NumpyEncoder)
 
