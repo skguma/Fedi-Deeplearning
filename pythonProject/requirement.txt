@@ -1,0 +1,12 @@
+flask
+flask_cors
+uwsgi
+opencv-python-headless
+requests
+tensorflow
+pillow
+torch
+scikit-image
+sklearn
+matplotlib
+facenet-pytorch

@@ -26,7 +26,7 @@ def detectFace():
     #img = request.files['file']
     img = request.values['images']
     mtcnn = MTCNN(post_process=False)
-    processed_img, left_eye, right_eye = detect_face(img, mtcnn)
+    processed_img, left_eye, right_eye, original_img_size = detect_face(img, mtcnn)
 
     eyes = ' '.join(str(e) for e in left_eye.tolist() + right_eye.tolist())
     # plt.imshow(processed_img)
@@ -34,6 +34,7 @@ def detectFace():
 
     response = {}
     response["eyes"] = eyes
+    response["size"] = original_img_size
 
     return jsonify(response)
 
@@ -61,3 +62,5 @@ def extract():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
+
+application = app

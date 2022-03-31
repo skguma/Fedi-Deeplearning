@@ -198,5 +198,5 @@ def detect_face(img_path, mtcnn, margin = 15, target_size = (160, 160)):
 
 	face_img = face[0]
 
-	return face_img, left_eye, right_eye # 원본 사진에서의 눈 위치 반환.
+	return face_img, left_eye, right_eye, raw_image_size # 원본 사진에서의 눈 위치 반환.
 
