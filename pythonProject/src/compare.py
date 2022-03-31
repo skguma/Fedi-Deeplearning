@@ -47,7 +47,7 @@ def detect_faces(imgs):
 
     for img in imgs:
         mtcnn = MTCNN(post_process=False)
-        processed_img, left_eye, right_eye = detect_face(img, mtcnn)
+        processed_img, left_eye, right_eye, img_size = detect_face(img, mtcnn)
         results.append(processed_img)
         # plt.imshow(processed_img)
         # plt.show()
