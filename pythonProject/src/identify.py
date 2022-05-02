@@ -23,12 +23,20 @@ def find_face(test_image, db_images):
     return final
 
 def calculate_embeddings(inputs):
-    results = {}
+    data = []
     images = compare.detect_faces(list(inputs.values()))
 
     for i, key in enumerate(inputs.keys()):
-        results[key] = compare.calculate_embeddings([images[i]])[0]
-    return results
+        print(len(images[i]))
+        results = {}
+        if (len(images[i]) != 4):
+            continue
+        results["index"] = key
+        results["eyes"] = ' '.join(str(e) for e in images[i][1].tolist() + images[i][2].tolist())
+        results["size"] = ' '.join(str(e) for e in images[i][3])
+        results["vector"] = compare.calculate_embeddings([images[i][0]])[0]
+        data.append(results)
+    return data
 
 def calculate_distance(test_image, db_embeddings):
     db = {}

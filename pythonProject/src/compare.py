@@ -44,13 +44,15 @@ tf.disable_v2_behavior()
 
 def detect_faces(imgs):
     results = []
+    mtcnn = MTCNN(post_process=False)
 
     for img in imgs:
-        mtcnn = MTCNN(post_process=False)
-        processed_img, left_eye, right_eye, img_size = detect_face(img, mtcnn)
-        results.append(processed_img)
-        # plt.imshow(processed_img)
-        # plt.show()
+        try:
+            processed_img, left_eye, right_eye, img_size = detect_face(img, mtcnn)
+        except:
+            results.append([-1])
+        else:
+            results.append([processed_img, left_eye, right_eye, img_size])
 
     return results
 
