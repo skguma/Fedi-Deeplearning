@@ -56,6 +56,18 @@ def detect_faces(imgs):
 
     return results
 
+def detect_face_1(imgs):
+    results = []
+
+    mtcnn = MTCNN(post_process=False)
+    for img in imgs:
+        processed_img, left_eye, right_eye, img_size = detect_face(img, mtcnn)
+        results.append(processed_img)
+        # plt.imshow(processed_img)
+        # plt.show()
+
+    return results
+
 
 def calculate_embeddings(images):
     with tf.Graph().as_default():

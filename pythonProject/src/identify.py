@@ -27,21 +27,21 @@ def calculate_embeddings(inputs):
     images = compare.detect_faces(list(inputs.values()))
 
     for i, key in enumerate(inputs.keys()):
-        print(len(images[i]))
         results = {}
         if (len(images[i]) != 4):
             continue
         results["index"] = key
         results["eyes"] = ' '.join(str(e) for e in images[i][1].tolist() + images[i][2].tolist())
         results["size"] = ' '.join(str(e) for e in images[i][3])
-        results["vector"] = compare.calculate_embeddings([images[i][0]])[0]
+        vector = compare.calculate_embeddings([images[i][0]])[0]
+        results["vector"] = ', '.join(str(x) for x in vector)
         data.append(results)
     return data
 
 def calculate_distance(test_image, db_embeddings):
     db = {}
     results = {}
-    input = compare.detect_faces([test_image])[0]
+    input = compare.detect_face_1([test_image])[0]
     input_embedding = compare.calculate_embeddings([input])[0]
 
     for key in db_embeddings.keys():
