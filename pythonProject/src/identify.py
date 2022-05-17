@@ -2,7 +2,7 @@ from src import compare
 import numpy as np
 
 def similarity(dist):
-    return (2-dist)*50
+    return (3-dist)*30
 
 def find_face(test_image, db_images):
     results = {}
